@@ -1,15 +1,17 @@
 // this is to grab the cards in the deck
-let deck = document.querySelector('.deck') 
-// we need this because we will be pushing all of the clicked cards into this array to be evaluated.
-// it is best to put into the global scope because we are going to be using it a lot.
-let openCards = []
+const deck = document.querySelector('.deck') 
 
+//function to shuffle
+//need to set variables for the array. what do we want to pass through it? ahh right, the cards. 
 function shuffleDeck() {
-	
+
 }
 
 shuffleDeck()
 
+// we need this because we will be pushing all of the clicked cards into this array to be evaluated.
+// it is best to put into the global scope because we are going to be using it a lot.
+let openCards = []
 
 //this is a click handler. an event was put onto deck, which means it listens for every card to be clicked. 
 //conditionals were put on the handler so that the user can only click up to 2 cards at a time
@@ -26,17 +28,17 @@ deck.addEventListener('click', event => {
 		openCard(clickTarget)
 		addOpenCard(clickTarget)
 		if(openCards.length === 2) {
-			checkForMatch()
-		}
+			checkForMatch(clickTarget)
+		} 
 		
 	}
 })
 
 // created a function to open the card, called 'openCard' We can then put this function into the eventlistener.
 //.toggle means to display or hide matched elements.
-function openCard(clickTarget) {
-	clickTarget.classList.toggle('open')
-	clickTarget.classList.toggle('show')
+function openCard(card) {
+	card.classList.toggle('open')
+	card.classList.toggle('show')
 }
 
 
@@ -57,6 +59,7 @@ function addOpenCard (clickTarget) {
 // we want to toggle the match on both elements and then reset the array
 //if they dont match we want to reset the array and turn the toggle off
 //time out is a callback function to give the look of a "turn" letes the user see both of the cards (1000ms) before turning over
+//WHERE YOU PUT OPENCARDS MATTERS. ORDER MATTERS HERE.
 function checkForMatch () {
 	if (
 		openCards[0].firstElementChild.className ===
@@ -66,15 +69,12 @@ function checkForMatch () {
 		openCards[1].classList.toggle('match')
 		openCards = []
 	} else {
-		openCard(openCards[0])
-		openCard(openCards[1])
-		openCards = []
-
 		setTimeout(() => {
 			openCard(openCards[0])
 			openCard(openCards[1])
 			openCards = []
-		}, 1000)
+		}, 500)
+		
 	}
 }
 
