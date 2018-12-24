@@ -1,0 +1,50 @@
+html {box-sizing:border-box;}
+*,* :after, *:before {box-sizing:inherit;}
+
+body {
+	margin:0;
+}
+.container {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+
+.deck {
+	list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	padding: 0;
+
+}
+
+.card {
+	font-size: 0px; /*this has to be 0 so it doesn't show when it is not clicked */
+	width: 200px;
+	height: 100px;
+	text-align: center;
+	border: 1px solid rgb(21,164,222);
+	border-radius: 4px; 
+	padding:21px;
+	margin-bottom: 15px;
+	background: lightgrey;
+	color: white;
+}
+
+.deck .card.open {
+    background: rgb(21,164,222);
+}
+
+.deck .card.show {
+    font-size: 50px; /*the font size is different because when it is clicked it will show the actual picture */
+}
+
+.deck .card.match {
+    background: rgb(26,195,171);
+}
+
+
+
+
