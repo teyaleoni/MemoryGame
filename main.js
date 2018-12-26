@@ -5,7 +5,7 @@ const deck = document.querySelector('.deck')
 let openCards = []
 
 //this variable is for the turns for the user
-let turns = 10
+let turns = 9
 
 
 
@@ -92,7 +92,11 @@ if (openCards.length === 2) {
 	addTurns
 }
 
-
+function lost() {
+	if (turns <= 0) {
+		window.open('lose.html', '_self')
+	}
+}
 
 //now we are creating a new function to see if the cards match!
 //since we set the user to only 2 clicks, those 2 clicks push the first and second index into the openCard array
@@ -116,6 +120,7 @@ function checkForMatch () {
 			openCard(openCards[0])
 			openCard(openCards[1])
 			turns--
+			lost()
 			openCards = []
 			
 		}, 500)
