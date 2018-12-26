@@ -46,5 +46,6 @@ body {
 }
 
 
+/*(.open) (.show) doesn't need to be in the HTML because it's connected into the js*/
 
 
